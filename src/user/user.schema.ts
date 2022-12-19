@@ -13,7 +13,7 @@ export class User {
   _id: MongooseSchema.Types.ObjectId;
 
   @Prop()
-  @Field(() => Int, { description: 'User Age' })
+  @Field(() => Int, { description: 'User Age', nullable: true })
   age: number;
 
   @Prop()
@@ -22,7 +22,7 @@ export class User {
 
   @Prop()
   @Field(() => String, { description: 'User Breed' })
-  breed: string;
+  breed?: string | null;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
