@@ -4,7 +4,7 @@ import { UserService } from './user.service';
 import { UserInput } from './dto/user-input.dto';
 import { UserInsert } from './dto/user-mutation.dto';
 import { User } from './dto/user-query.dto';
-import { User as UserModel } from './user.schema';
+// import { User as UserModel } from './user.schema';
 
 @Resolver(() => User)
 export class UserResolver {
@@ -16,12 +16,12 @@ export class UserResolver {
   }
 
   @Query(() => User)
-  getUser(@Args('userId') args: UserInput): User {
+  getUser(@Args('userId') args: UserInput) {
     return this.userService.getOneUser(args);
   }
 
   @Mutation(() => User)
-  async insertUser(@Args('newUser') newUser: UserInsert): Promise<UserModel> {
+  async insertUser(@Args('newUser') newUser: UserInsert) {
     return await this.userService.newUser(newUser);
   }
 }
